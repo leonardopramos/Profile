@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -9,14 +9,18 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Links</title>
+    <title>Links Pessoais</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <button id="language-switch" type="button" onclick="toggleLanguage()">
+      EN
+    </button>
     <div id="container">
       <div id="profile">
         <img
           src="./assets/Avatar.png"
+          data-i18n-alt="profileAlt"
           alt="Foto de Leonardo Ramos sorrindo, usando um terno preto com camisa e gravata azul, com árvores de fundo."
         />
         <p>@leonardo.pramos</p>
@@ -28,18 +32,26 @@
 
       <ul>
         <li>
-          <a href="https://github.com/leonardopramos" target="_blank"
-            >Portfolio
+          <a
+            href="https://github.com/leonardopramos"
+            target="_blank"
+            data-i18n="portfolio"
+            >Portfólio
           </a>
         </li>
         <li>
           <a
-            href="https://drive.google.com/u/0/uc?id=101v9-Yl9cRMUvgtWXWSgVj3I0maYWiIG&export=download"
-            >Download do Currículo em pdf</a
+            id="resume-link"
+            href="./files/curriculo-leonardo-preczevski-ramos.pdf"
+            data-i18n="resume"
+            >Download do Currículo em PDF</a
           >
         </li>
         <li>
-          <a href="mailto:leonardopreczevskiramos@gmail.com" target="_blank"
+          <a
+            href="mailto:leonardopreczevskiramos@gmail.com"
+            target="_blank"
+            data-i18n="contact"
             >Contato</a
           >
         </li>
@@ -59,7 +71,7 @@
         </a>
       </div>
       <footer>
-        Projeto feito a partir do Discover
+        <span data-i18n="footerPrefix">Projeto feito a partir do Discover</span>
         <a href="https://www.rocketseat.com.br/discover" target="_blank"
           >RocketSeat</a
         >
