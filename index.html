@@ -13,22 +13,29 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <button id="language-switch" type="button" onclick="toggleLanguage()">
-      EN
+    <button
+      id="language-switch"
+      class="toggle-control"
+      type="button"
+      aria-label="Alternar idioma para inglês"
+    >
+      <span class="toggle-option">PT</span>
+      <span class="toggle-option">EN</span>
+      <span class="toggle-thumb" aria-hidden="true"></span>
     </button>
     <div id="container">
       <div id="profile">
         <img
-          src="./assets/Avatar.png"
+          src="./assets/foto-perfil.jpg"
           data-i18n-alt="profileAlt"
           alt="Foto de Leonardo Ramos sorrindo, usando um terno preto com camisa e gravata azul, com árvores de fundo."
         />
         <p>@leonardo.pramos</p>
       </div>
-      <div id="switch" onclick="toggleMode()">
-        <button></button>
-        <span></span>
-      </div>
+      <button id="switch" type="button" aria-label="Alternar tema">
+        <span class="switch-thumb" aria-hidden="true"></span>
+        <span class="switch-track" aria-hidden="true"></span>
+      </button>
 
       <ul>
         <li>
@@ -70,12 +77,6 @@
           <ion-icon name="logo-instagram"></ion-icon>
         </a>
       </div>
-      <footer>
-        <span data-i18n="footerPrefix">Projeto feito a partir do Discover</span>
-        <a href="https://www.rocketseat.com.br/discover" target="_blank"
-          >RocketSeat</a
-        >
-      </footer>
     </div>
     <script
       type="module"

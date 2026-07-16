@@ -1,8 +1,3 @@
-function toggleMode() {
-  const html = document.documentElement
-  html.classList.toggle("light")
-}
-
 const translations = {
   "pt-BR": {
     title: "Links Pessoais",
@@ -12,7 +7,7 @@ const translations = {
     footerPrefix: "Projeto feito a partir do Discover",
     profileAlt:
       "Foto de Leonardo Ramos sorrindo, usando um terno preto com camisa e gravata azul, com árvores de fundo.",
-    languageButton: "EN",
+    languageLabel: "Alternar idioma para inglês",
     resumeHref: "./files/curriculo-leonardo-preczevski-ramos.pdf",
   },
   en: {
@@ -23,12 +18,17 @@ const translations = {
     footerPrefix: "Project built from Discover",
     profileAlt:
       "Photo of Leonardo Ramos smiling, wearing a black suit with a blue shirt and tie, with trees in the background.",
-    languageButton: "PT-BR",
+    languageLabel: "Switch language to Brazilian Portuguese",
     resumeHref: "./files/Curriculo EN.pdf",
   },
 }
 
 let currentLanguage = "pt-BR"
+
+function toggleMode() {
+  const html = document.documentElement
+  html.classList.toggle("light")
+}
 
 function applyLanguage(language) {
   const content = translations[language]
@@ -41,6 +41,7 @@ function applyLanguage(language) {
   }
 
   html.lang = language
+  html.dataset.language = language
   document.title = content.title
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -54,7 +55,7 @@ function applyLanguage(language) {
   })
 
   resumeLink.href = content.resumeHref
-  languageButton.textContent = content.languageButton
+  languageButton.setAttribute("aria-label", content.languageLabel)
   currentLanguage = language
 }
 
@@ -63,4 +64,17 @@ function toggleLanguage() {
   applyLanguage(nextLanguage)
 }
 
-applyLanguage(currentLanguage)
+document.addEventListener("DOMContentLoaded", () => {
+  const themeSwitch = document.getElementById("switch")
+  const languageSwitch = document.getElementById("language-switch")
+
+  if (themeSwitch) {
+    themeSwitch.addEventListener("click", toggleMode)
+  }
+
+  if (languageSwitch) {
+    languageSwitch.addEventListener("click", toggleLanguage)
+  }
+
+  applyLanguage(currentLanguage)
+})
